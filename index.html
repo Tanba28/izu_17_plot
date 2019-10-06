@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>izu oshima - Leaflet</title>
+
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://unpkg.com/leaflet.sync/L.Map.Sync.js"></script>
+
+
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map_left {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <style>#map_right {position:absolute;top:0;bottom:0;right:0;left:50%;}</style>
+
+</head>
+<body>
+    <div id="map_left" style="width: 49.8%; height: 100%;"></div>
+    <div id="map_right" style="width: 49.8%; height: 100%;"></div>
+
+    <script>
+
+	var map_left = L.map('map_left').setView([34.735972,139.420944], 16);
+	var map_right = L.map('map_right').setView([34.735972,139.420944], 16);
+
+    L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg', {
+        maxZoom: 18,
+        attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>"
+    }).addTo(map_left);
+
+    L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/ort/{z}/{x}/{y}.jpg', {
+        maxZoom: 18,
+        attribution: "<a href='http://www.gsi.go.jp/kikakuchousei/kikakuchousei40182.html' target='_blank'>国土地理院</a>"
+    }).addTo(map_right);
+    
+    //Launch Point
+    L.circle([34.735972,139.420944], 50,{
+        color: '#FF0000',
+        weight: 3,
+        opacity: 0.8,
+        fillColor: '#FF0000',
+        fillOpacity: 0.3
+    }).addTo(map_left);
+
+    L.circle([34.735972,139.420944], 50,{
+        color: '#FF0000',
+        weight: 3,
+        opacity: 0.8,
+        fillColor: '#FF0000',
+        fillOpacity: 0.3
+    }).addTo(map_right);
+
+    //Ignition Point
+    L.circle([34.735390,139.421377], 50,{
+        color: '#FF0000',
+        weight: 3,
+        opacity: 0.8,
+        fillColor: '#FF0000',
+        fillOpacity: 0.3
+    }).addTo(map_left);
+
+    L.circle([34.735390,139.421377], 50,{
+        color: '#FF0000',
+        weight: 3,
+        opacity: 0.8,
+        fillColor: '#FF0000',
+        fillOpacity: 0.3
+    }).addTo(map_right);
+
+    //HQ Point
+    L.circle([34.731230,139.423150], 50,{
+        color: '#FF0000',
+        weight: 3,
+        opacity: 0.8,
+        fillColor: '#FF0000',
+        fillOpacity: 0.3
+    }).addTo(map_left);
+
+    L.circle([34.731230,139.423150], 50,{
+        color: '#FF0000',
+        weight: 3,
+        opacity: 0.8,
+        fillColor: '#FF0000',
+        fillOpacity: 0.3
+    }).addTo(map_right);
+
+    var geojsonMarkerOptions = {
+        radius: 4,
+        fillColor: "#ff7800",
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+    };
+
+    var hard_89 = L.layerGroup();
+    var hard_88 = L.layerGroup();
+    var hard_87 = L.layerGroup();
+    var hard_86 = L.layerGroup();
+    var hard_85 = L.layerGroup();
+    var hard_84 = L.layerGroup();
+    var hard_83 = L.layerGroup();
+    var hard_82 = L.layerGroup();
+    var hard_81 = L.layerGroup();
+    var hard_80 = L.layerGroup();
+
+    $.getJSON("hard_89.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "hard": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(hard_89);
+    });
+
+    $.getJSON("hard_88.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "hard": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(hard_88);
+    });
+
+    $.getJSON("hard_87.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "hard": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(hard_87);
+    });
+
+    $.getJSON("hard_86.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "hard": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(hard_86);
+    });
+
+    $.getJSON("hard_85.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "hard": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(hard_85);
+    });
+    
+    $.getJSON("hard_84.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "hard": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(hard_84);
+    });
+
+    $.getJSON("hard_83.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "hard": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(hard_83);
+    });
+
+    $.getJSON("hard_82.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "hard": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(hard_82);
+    });
+
+    $.getJSON("hard_81.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "hard": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(hard_81);
+    });
+
+    $.getJSON("hard_80.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "hard": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(hard_80);
+    });
+
+	var hard_lays = {
+		"89": hard_89,
+        "88": hard_88,
+		"87": hard_87,
+        "86": hard_86,
+		"85": hard_85,
+        "84": hard_84,
+		"83": hard_83,
+        "82": hard_82,
+        "81": hard_81,
+        "80": hard_80      
+	};
+
+	L.control.layers(hard_lays,null,{collapsed: false}).addTo(map_left);
+
+    var soft_89 = L.layerGroup();
+    var soft_88 = L.layerGroup();
+    var soft_87 = L.layerGroup();
+    var soft_86 = L.layerGroup();
+    var soft_85 = L.layerGroup();
+    var soft_84 = L.layerGroup();
+    var soft_83 = L.layerGroup();
+    var soft_82 = L.layerGroup();
+    var soft_81 = L.layerGroup();
+    var soft_80 = L.layerGroup();
+
+    $.getJSON("soft_89.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "soft": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(soft_89);
+    });
+
+    $.getJSON("soft_88.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "soft": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(soft_88);
+    });
+
+    $.getJSON("soft_87.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "soft": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(soft_87);
+    });
+
+    $.getJSON("soft_86.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "soft": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(soft_86);
+    });
+
+    $.getJSON("soft_85.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "soft": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(soft_85);
+    });
+    
+    $.getJSON("soft_84.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "soft": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(soft_84);
+    });
+
+    $.getJSON("soft_83.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "soft": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(soft_83);
+    });
+
+    $.getJSON("soft_82.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "soft": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(soft_82);
+    });
+
+    $.getJSON("soft_81.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "soft": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(soft_81);
+    });
+
+    $.getJSON("soft_80.json",function(data){
+        L.geoJson(data,{
+            style: function(feature){
+                switch(feature.properties.name){
+                    case "soft": return {color: "#0101DF"};
+                    case "safety": return {color: "#FFFF00",dashArray: 12};
+                }
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, geojsonMarkerOptions);
+            }
+        }).addTo(soft_80);
+    });
+
+	var soft_lays = {
+		"89": soft_89,
+        "88": soft_88,
+		"87": soft_87,
+        "86": soft_86,
+		"85": soft_85,
+        "84": soft_84,
+		"83": soft_83,
+        "82": soft_82,
+        "81": soft_81,
+        "80": soft_80      
+	};
+
+	L.control.layers(soft_lays,null,{collapsed: false}).addTo(map_right);
+
+    L.control.scale({ imperial: false }).addTo(map_left);
+    L.control.scale({ imperial: false }).addTo(map_right);
+
+    map_left.sync(map_right, {syncCursor: true});
+    map_right.sync(map_left, {syncCursor: true});
+    </script>
+</body>
+</html>
